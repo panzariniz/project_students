@@ -4,6 +4,7 @@ services:
   web:
     build: .
     container_name: robolaura_web
+    restart: always
     volumes:
       - .:/app
     depends_on:
