@@ -1,0 +1,50 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: robolaura_web
+    volumes:
+      - .:/app
+    depends_on:
+      - redis
+      - mongodb
+    ports:
+      - '5000:5000'
+    environment: 
+      - PYTHONUNBUFFERED=1
+    networks:
+      - app-connect
+
+  redis:
+    image: bitnami/redis:latest
+    container_name: robolaura_redis
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    volumes:
+      - robolaura_redis_data:/data
+    ports:
+      - '6379:6379'
+    networks:
+      - app-connect
+
+  mongodb:
+    image: mongo:latest
+    container_name: robolaura_mongo
+    restart: always
+    environment: 
+      MONGODB_DATABASE: robolaura
+    volumes:
+      - robolaura_mongo_data:/data
+    ports:
+      - '27017:27017'
+    networks:
+      - app-connect
+
+volumes:
+  robolaura_redis_data:
+  robolaura_mongo_data:
+
+networks:
+  app-connect: {}
