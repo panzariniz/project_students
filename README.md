@@ -23,6 +23,6 @@ $ docker-compose up
 
 https://documenter.getpostman.com/view/876465/T1LJjoYv?version=latest
 
-### Collection on Postman - To download and extract
+### Collection on Postman - To download and import
 
 https://gist.github.com/panzariniz/b09ec12c7cf938c899ac8a24c15def9a
